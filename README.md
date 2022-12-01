@@ -12,8 +12,12 @@ A unique platformer with a strange concept of flight. You are the bird trys to g
 - JAVASCRIPT
 
 ## Wireframe
+<<<<<<< HEAD
 ![wireframe](https://user-images.githubusercontent.com/117212735/205158536-28fd13e8-c562-454a-a708-51919f9fd012.png)
 
+=======
+![Birdtime Wireframe](./img/wireframe.png)
+>>>>>>> 10398e6 (formatting webframe rough draft)
 
 This project will consist of canvas (please)
 and will be formatted like a 2012 web games like y3 or y8
