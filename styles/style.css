@@ -17,7 +17,7 @@ body {
     display: grid;
     grid-template-columns: 1fr 7fr 1fr;
     grid-template-areas: 'left middle right';
-    height: 600px
+    height: 750px
 }
 
 #left {
@@ -27,9 +27,11 @@ body {
 }
 
 #main-content {
+    grid-area: middle;
+    display: grid;
     margin: 0 auto;
     border: 2px solid orange;
-    grid-area: middle;
+    grid-template-rows: 4fr 1fr;
     height: auto;
     width: 100%;
 }
@@ -44,4 +46,15 @@ footer{
     border: 2px solid white;
     justify-content: ;
     height: 100px;
+}
+
+#game-screen {
+    border: 2px solid rgb(255, 0, 212);
+    width: 100%;
+    height: auto;
+    
+}
+
+#description {
+    border: 2px solid rgb(198, 228, 3);
 }
