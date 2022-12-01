@@ -12,6 +12,7 @@ A unique platformer with a strange concept of flight. You are the bird trys to g
 - JAVASCRIPT
 
 ## Wireframe
+![Birdframe Wireframe](./img/wireframe.png)
 
 This project will consist of canvas (please)
 and will be formatted like a 2012 web games like y3 or y8
