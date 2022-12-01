@@ -1,9 +1,18 @@
 body {
-    background-color: rgb(70, 70, 237);
+    background-color: blue;
+    min-height: 100vh;
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr 6fr 1fr;
+    grid-template-rows: 100px 1fr 80px;
+    grid-template-areas:    'header header header' 
+                            'left game-screen right'
+                            'footer footer footer';
 }
 
 
 #header {
+    grid-area: header;
     margin-left: 0;
     border: 2px solid white;
     border-bottom: 2px solid black;
@@ -11,50 +20,27 @@ body {
 }
 
 #mainscreen {
-    border: 2px solid green;
+    grid-area: middle;
+    border: 15px solid green;
     margin: 0;
     margin-top: 25px;
-    display: grid;
-    grid-template-columns: 1fr 7fr 1fr;
-    grid-template-areas: 'left middle right';
-    height: 750px
 }
 
 #left {
-    margin: 0;
     grid-area: left;
-    border: 2px solid yellow;
-}
-
-#main-content {
-    grid-area: middle;
-    display: grid;
-    margin: 0 auto;
-    border: 2px solid orange;
-    grid-template-rows: 4fr 1fr;
-    height: auto;
-    width: 100%;
 }
 
 #right {
     grid-area: right;
-    border: 2px solid yellow;
-}
-
-footer{
-    display: flex;
-    border: 2px solid white;
-    justify-content: ;
-    height: 100px;
 }
 
 #game-screen {
+    grid-area: game-screen;
     border: 2px solid rgb(255, 0, 212);
     width: 100%;
     height: auto;
-    
 }
 
-#description {
-    border: 2px solid rgb(198, 228, 3);
+#footer {
+    grid-area: footer;
 }
