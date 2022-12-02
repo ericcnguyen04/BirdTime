@@ -59,7 +59,7 @@ let gameFlight = false
 // === ! Step 2: USER INPUT ! === //
 //start button
 const start = document.getElementById('start')
-start.addEventListener('click', () => {
+const clickRestart = start.addEventListener('click', () => {
     gameFlight = true
     start.innerText = "FLY"
 })
@@ -76,11 +76,14 @@ function controlInput(bounce) {
             // console.log('falling')
             testBird.y += 15
         }
-        if (pressedKeys.r && gameFlight === false) {
-            // console.log('restart')
-            testBird.x = 250
-            testBird.y = 270
-        }
+    }
+}
+
+function restartInput() {
+    if (pressedKeys.r || clickRestart) {
+        testBird.x = 250
+        testBird.y = 270
+        start.innerText = "START"
     }
 }
 
@@ -98,6 +101,7 @@ function gameLoop() {
         console.log('gameover')
         gameFlight = false
         start.innerText = "RESTART?"
+        restartInput()
     } else {
         controlInput(35)
     }
