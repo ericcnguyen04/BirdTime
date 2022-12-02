@@ -80,10 +80,18 @@ function controlInput(bounce) {
 }
 
 function restartInput() {
-    if (pressedKeys.r || clickRestart) {
+    if (pressedKeys.r) {
         testBird.x = 250
         testBird.y = 270
-        start.innerText = "START"
+        start.innerText = "CLICK TO PLAY"
+    }
+    if (gameFlight == false) { // STARTS OFF IMMEDIATELY
+        start.addEventListener('click', () => {
+            gameFlight == false
+            testBird.x = 250
+            testBird.y = 270
+            start.innerText = "CLICK TO PLAY"
+        })
     }
 }
 
