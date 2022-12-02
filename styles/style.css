@@ -39,11 +39,20 @@ body {
 
 #directions {
     grid-area: directions;
+    display: flexbox;
+    flex-direction: row;
     background-color: white;
     height: 100%;
 }
 
-
+#start {
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    font-size: 56px;
+    height: 1fr;
+    width: 50vw;
+}
 
 #footer {
     grid-area: footer;

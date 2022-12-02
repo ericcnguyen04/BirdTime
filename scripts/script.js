@@ -57,9 +57,11 @@ let gameFlight = false
 
 
 // === ! Step 2: USER INPUT ! === //
+//start button
 const start = document.getElementById('start')
-document.addEventListener('click', () => {
+start.addEventListener('click', () => {
     gameFlight = true
+    start.innerText = "FLY"
 })
 
 const pressedKeys = {}
@@ -68,10 +70,16 @@ function controlInput(bounce) {
         console.log(pressedKeys)
         if (pressedKeys.w) {
             // console.log('bounce')
+            gameFlight == true
             testBird.y -= bounce
         } else {
             // console.log('falling')
             testBird.y += 15
+        }
+        if (pressedKeys.r && gameFlight === false) {
+            // console.log('restart')
+            testBird.x = 250
+            testBird.y = 270
         }
     }
 }
@@ -89,6 +97,7 @@ function gameLoop() {
     if (detectHitGround(testBird)) {
         console.log('gameover')
         gameFlight = false
+        start.innerText = "RESTART?"
     } else {
         controlInput(35)
     }
@@ -103,7 +112,7 @@ function gameLoop() {
 // === ! Step 4: FIND COLLISION / LOSE CONDITION! === // 
 function detectHitGround(objOne) {
     const topOfGround = objOne.y + objOne.height >= canvas.height
-    console.log(topOfGround)
+    // console.log(topOfGround)
     return topOfGround //false til true
 }
 // ========== //
