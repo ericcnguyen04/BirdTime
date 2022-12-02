@@ -59,17 +59,20 @@ ground.render()
 
 
 // === ! Step 2: USER INPUT ! === //
-function controlInput() {
+function controlInput(altitude) {
     if (pressedKeys.spaceBar) {
         console.log('bounce')
+        testBird.y += altitude
     } else {
         console.log('falling')
+
     }
 }
 
 const pressedKeys = {}
-document.addEventListener('keydown', e => pressedKeys[e.key] = true)
-// document.addEventListener('keyup', e => pressedKeys[e.key] = false)
+document.addEventListener('click', (e) => controlInput())
+// document.addEventListener('keydown', e => controlInput(pressedKeys[e.key]))
+document.addEventListener('keyup', e => pressedKeys[e.key] = false)
 controlInput()
 // ========== //
 
@@ -78,13 +81,16 @@ controlInput()
 function gameLoop() {
     //clearing canvas
     ctx.clearRect(0, 0, canvas.width, canvas.height)
-
+    console.log(pressedKeys)
 }
 
 // ========== //
 
 
 // === ! Step 4: FIND COLLISION / LOSE CONDITION! === // 
-
+function detectHitGround(objOne, objTwo) {
+    const topOfGround = objOne.y + objOne.height <= objTwo
+    return topOfGround
+}
 // ========== //
 
