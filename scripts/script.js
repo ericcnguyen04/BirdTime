@@ -2,7 +2,7 @@ const canvas = document.getElementById('game-screen')
 
 // set thecanvas resolution to be the same as the screen
 canvas.setAttribute('height', getComputedStyle(canvas)['height'])
-canvas.setAttribute('width',getComputedStyle(canvas)['width'])
+canvas.setAttribute('width', getComputedStyle(canvas)['width'])
 console.log(canvas.height) //648
 console.log(canvas.width) //1094
 
@@ -14,13 +14,12 @@ const gameLoopInterval = setInterval(gameLoop, 60)
 
 // === ! Step 1: OBJECTS ! === //
 class Bird {
-    constructor(x, y, width, height, color, flying) {
+    constructor(x, y, width, height, color) {
         this.x = x
         this.y = y
         this.width = width
         this.height = height
         this.color = color
-        this.flying = true
     }
     
     render() {
@@ -50,7 +49,8 @@ class Bird {
 
 //testing
 const testBird = new Bird(250, 270, 50, 50, 'red')
-const ground = new Bird(0, 500, canvas.width, 100, 'brown')
+const ground = new Bird(0, 550, canvas.width, 300, 'brown')
+let gameFlight = true
 // const testPipe = new Pipe(700, 0, 75, 200, 300)
 // testPipe.render()
 
@@ -59,14 +59,18 @@ const ground = new Bird(0, 500, canvas.width, 100, 'brown')
 
 // === ! Step 2: USER INPUT ! === //
 const pressedKeys = {}
-function controlInput(altitude) {
-    console.log(pressedKeys)
-    if (pressedKeys.w) {
-        console.log('bounce')
-        testBird.y -= altitude
-    } else {
-        console.log('falling')
-        testBird.y += altitude
+function controlInput(bounce) {
+    if (gameFlight == true) {
+        console.log(pressedKeys)
+        if (pressedKeys.w) {
+            // console.log('bounce')
+            testBird.y -= bounce
+        } else {
+            // console.log('falling')
+            testBird.y += 15
+        }
+    } if (gameFlight != false) {
+        testBird.y == ground.x
     }
 }
 document.addEventListener('keydown', e => pressedKeys[e.key] = true)
@@ -91,11 +95,11 @@ function gameLoop() {
     //clearing canvas
     ctx.clearRect(0, 0, canvas.width, canvas.height)
     //detecting hits from bird to ground
-    if (detectHitGround(testBird, ground)) {
+    if (!detectHitGround(testBird, ground)) {
         console.log('gameover')
-        testBird.flying = false
+        gameFlight = false
     } else {
-        controlInput(65)
+        controlInput(35)
     }
     //render game objects
     ground.render()
@@ -108,7 +112,8 @@ function gameLoop() {
 
 // === ! Step 4: FIND COLLISION / LOSE CONDITION! === // 
 function detectHitGround(objOne, objTwo) {
-    const topOfGround = objOne.y + objOne.height >= objTwo
+    const topOfGround = objOne.y + objOne.height >= objTwo.x
+    console.log(topOfGround)
     return topOfGround //false
 }
 // ========== //
