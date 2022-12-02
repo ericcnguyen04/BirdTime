@@ -49,8 +49,7 @@ class Bird {
 
 //testing
 const testBird = new Bird(250, 270, 50, 50, 'red')
-const ground = new Bird(0, 550, canvas.width, 300, 'brown')
-let gameFlight = true
+let gameFlight = false
 // const testPipe = new Pipe(700, 0, 75, 200, 300)
 // testPipe.render()
 
@@ -58,6 +57,11 @@ let gameFlight = true
 
 
 // === ! Step 2: USER INPUT ! === //
+const start = document.getElementById('start')
+document.addEventListener('click', () => {
+    gameFlight = true
+})
+
 const pressedKeys = {}
 function controlInput(bounce) {
     if (gameFlight == true) {
@@ -69,25 +73,12 @@ function controlInput(bounce) {
             // console.log('falling')
             testBird.y += 15
         }
-    } if (gameFlight != false) {
-        testBird.y == ground.x
     }
 }
+
+//needed game loop interval // line 13
 document.addEventListener('keydown', e => pressedKeys[e.key] = true)
 document.addEventListener('keyup', e => pressedKeys[e.key] = false)
-// document.addEventListener('click', (w) => controlInput(100))
-// document.addEventListener('click', e => controlInput(65))
-// document.addEventListener("keydown", e => {
-//     console.log(e.key)
-//     if (e.key === 'w') {
-//         testBird.y += 65
-//     }
-// })
-
-    // document.addEventListener("keydown", e => {
-    //     if (e.key ==)
-    //     })
-// ========== //
 
 // === ! Step 3: DEFINE GAME LOOP ! === //
 
@@ -102,7 +93,6 @@ function gameLoop() {
         controlInput(35)
     }
     //render game objects
-
     testBird.render()
 
 }
