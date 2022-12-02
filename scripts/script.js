@@ -10,6 +10,7 @@ console.log(canvas.width) //1094
 //get rendering context from canvas
 const ctx = canvas.getContext('2d')
 
+const gameLoopInterval = setInterval(gameLoop, 60)
 
 // === ! Step 1: OBJECTS ! === //
 class Bird {
@@ -49,9 +50,7 @@ class Bird {
 
 //testing
 const testBird = new Bird(250, 270, 50, 50, 'red')
-testBird.render()
 const ground = new Bird(0, 500, canvas.width, 100, 'brown')
-ground.render()
 // const testPipe = new Pipe(700, 0, 75, 200, 300)
 // testPipe.render()
 
@@ -64,21 +63,26 @@ function controlInput(altitude) {
     console.log(pressedKeys)
     if (pressedKeys.w) {
         console.log('bounce')
-        testBird.y += altitude
+        testBird.y -= altitude
     } else {
         console.log('falling')
-        testBird.y -= altitude
+        testBird.y += altitude
     }
 }
-
+document.addEventListener('keydown', e => pressedKeys[e.key] = true)
+document.addEventListener('keyup', e => pressedKeys[e.key] = false)
 // document.addEventListener('click', (w) => controlInput(100))
 // document.addEventListener('click', e => controlInput(65))
-document.addEventListener("keydown", e => {
-    console.log(e.key)
-    console.log(pressedKeys)
-    })
-document.addEventListener('keyup', e => pressedKeys[e.key] = false)
-controlInput()
+// document.addEventListener("keydown", e => {
+//     console.log(e.key)
+//     if (e.key === 'w') {
+//         testBird.y += 65
+//     }
+// })
+
+    // document.addEventListener("keydown", e => {
+    //     if (e.key ==)
+    //     })
 // ========== //
 
 // === ! Step 3: DEFINE GAME LOOP ! === //
@@ -87,13 +91,16 @@ function gameLoop() {
     //clearing canvas
     ctx.clearRect(0, 0, canvas.width, canvas.height)
     //detecting hits from bird to ground
-    if (!detectHitGround(testBird, ground)) {
+    if (detectHitGround(testBird, ground)) {
         console.log('gameover')
         testBird.flying = false
+    } else {
+        controlInput(65)
     }
     //render game objects
     ground.render()
     testBird.render()
+
 }
 
 // ========== //
