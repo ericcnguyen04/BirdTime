@@ -28,30 +28,28 @@ class Bird {
     }
 }
 
-// class Pipe {
-//     constructor(x, y, width, h1, h2) {
-//         this.x = x
-//         this.y = y
-//         this.width = width
-//         // this.gap = gap
-//         this.h1 = h1
-//         this.h2 = h2
-//         // this.h3 = h3
-//         // this.h4 = h4
-//     }
+class Pipe {
+    constructor(x, y, width, h1, h2) {
+        this.x = x
+        this.y = y
+        this.width = width
+        // this.gap = gap
+        this.h1 = h1
+        this.h2 = h2
+        // this.h3 = h3
+        // this.h4 = h4
+    }
 
-//     render() {
-//         ctx.fillStyle = this.color
-//         ctx.fill(this.x, this.y, this.width, this.h1)
-//         ctx.fill(this.x, this.y, this.width, this.h2)
-//     }
-// }
+    render() {
+        ctx.fillStyle = this.color
+        ctx.fill(this.x, this.y, this.width, this.h1)
+        ctx.fill(this.x, this.y, this.width, this.h2)
+    }
+}
 
 //testing
 const testBird = new Bird(250, 270, 50, 50, 'red')
 let gameFlight = false
-// const testPipe = new Pipe(700, 0, 75, 200, 300)
-// testPipe.render()
 
 // ========== //
 
@@ -64,6 +62,7 @@ const clickRestart = start.addEventListener('click', () => {
     start.innerText = "FLY"
 })
 
+//bounce
 const pressedKeys = {}
 function controlInput(bounce) {
     if (gameFlight == true) {
@@ -79,6 +78,7 @@ function controlInput(bounce) {
     }
 }
 
+//restart
 function restartInput() {
     if (pressedKeys.r) {
         testBird.x = 250
@@ -90,7 +90,7 @@ function restartInput() {
             gameFlight == false
             testBird.x = 250
             testBird.y = 270
-            start.innerText = "CLICK TO PLAY"
+            start.innerText = "FLY"
         })
     }
 }
