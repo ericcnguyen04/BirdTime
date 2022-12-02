@@ -95,14 +95,14 @@ function gameLoop() {
     //clearing canvas
     ctx.clearRect(0, 0, canvas.width, canvas.height)
     //detecting hits from bird to ground
-    if (!detectHitGround(testBird, ground)) {
+    if (detectHitGround(testBird)) {
         console.log('gameover')
         gameFlight = false
     } else {
         controlInput(35)
     }
     //render game objects
-    ground.render()
+
     testBird.render()
 
 }
@@ -111,10 +111,10 @@ function gameLoop() {
 
 
 // === ! Step 4: FIND COLLISION / LOSE CONDITION! === // 
-function detectHitGround(objOne, objTwo) {
-    const topOfGround = objOne.y + objOne.height >= objTwo.x
+function detectHitGround(objOne) {
+    const topOfGround = objOne.y + objOne.height >= canvas.height
     console.log(topOfGround)
-    return topOfGround //false
+    return topOfGround //false til true
 }
 // ========== //
 
