@@ -5,7 +5,7 @@ body {
     margin: 0;
     display: grid;
     grid-template-columns: 1fr 6fr 1fr;
-    grid-template-rows: 100px 4fr 2fr 80px;
+    grid-template-rows: 100px 4fr 3fr 80px;
     grid-template-areas:    'header header header' 
                             'left game-screen right'
                             'left directions right'
@@ -44,7 +44,7 @@ body {
     grid-row: 1fr 1fr;
     grid-gap: 10px;
     grid-template-areas:    'start score'
-                            'instructions score';
+                            'instructions instructions';
     background-color: rgb(141, 98, 77);
     height: 100%;
 }
@@ -54,13 +54,22 @@ body {
     margin-top: 10px;
     margin-left: 10px;
     margin-bottom: 10px;
+    border-top: 7px solid grey;
+    border-bottom: 7px solid black;
+    border-left: 7px solid grey;
+    border-right: 7px solid black;
     font-size: 56px;
     height: 1fr;
     width: 50vw;
+    cursor: pointer;
 }
 #instructions {
     grid-area: instructions;
     background-color: rgb(176, 163, 118);
+    border-top: 7px solid grey;
+    border-bottom: 7px solid black;
+    border-left: 7px solid grey;
+    border-right: 7px solid black;
     margin-bottom: 10px;
     margin-left: 10px;
 }
@@ -68,9 +77,15 @@ body {
 #score {
     grid-area: score;
     background-color: rgb(84, 96, 209);
+    text-align: center;
+    font-size: 256px;
     margin-top: 10px;
     margin-bottom: 10px;
     margin-right: 10px;
+    border-top: 7px solid grey;
+    border-bottom: 7px solid black;
+    border-left: 7px solid grey;
+    border-right: 7px solid black;
 }
 
 #footer {

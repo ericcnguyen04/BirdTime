@@ -50,7 +50,8 @@ class Pipe {
 //testing
 const testBird = new Bird(250, 270, 50, 50, 'red')
 let gameFlight = false
-
+const pipe = new Bird(400, 0, 70, 50, green)
+const pipe2 = new Bird(400, canvas.height, 70, 50, green)
 // ========== //
 
 
@@ -115,7 +116,8 @@ function gameLoop() {
     }
     //render game objects
     testBird.render()
-
+    pipe.render()
+    pipe2.render()
 }
 
 // ========== //
