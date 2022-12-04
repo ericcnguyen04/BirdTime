@@ -69,7 +69,7 @@ const clickRestart = start.addEventListener('click', () => {
 const pressedKeys = {}
 function controlInput(bounce) {
     if (gameFlight == true) {
-        console.log(pressedKeys)
+        // console.log(pressedKeys)
         if (pressedKeys.w) {
             // console.log('bounce')
             gameFlight == true
@@ -114,6 +114,11 @@ function gameLoop() {
         gameFlight = false
         start.innerText = "RESTART?"
         restartInput()
+    } else if (detectHitPipe(testBird, pipe)) {
+        console.log('gameover')
+        gameFlight = false
+        start.innerText = "RESTART?"
+        restartInput()
     } else {
         controlInput(35)
     }
@@ -142,9 +147,13 @@ function detectHitGround(objOne) {
 }
 
 function detectHitPipe(player, obstacle) {
-    const hitPipe = player.y + player.width 
-    const hitTopPipe = player.x 
-    const hitBotPipe = player.x + player.height
+    const hitPipe = player.x + player.width >= obstacle.x && player.x <= obstacle.x + obstacle.width && player.y <= obstacle.y + obstacle.height
+    // player.y <= obstacle.y + obstacle.height
+    // const hitTopPipe = player.y <= obstacle.y + obstacle.height
+    // const hitBotPipe = player.x + player.height ==
+    console.log(hitPipe)
+    // console.log(hitTopPipe)
+    return hitPipe //|| hitTopPipe //false til true
 }
 // ========== //
 
