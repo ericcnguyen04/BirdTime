@@ -28,30 +28,30 @@ class Bird {
     }
 }
 
-class Pipe {
-    constructor(x, y, width, h1, h2) {
-        this.x = x
-        this.y = y
-        this.width = width
-        // this.gap = gap
-        this.h1 = h1
-        this.h2 = h2
-        // this.h3 = h3
-        // this.h4 = h4
-    }
+// class Pipe {
+//     constructor(x, y, width, h1, h2) {
+//         this.x = x
+//         this.y = y
+//         this.width = width
+//         // this.gap = gap
+//         this.h1 = h1
+//         this.h2 = h2
+//         // this.h3 = h3
+//         // this.h4 = h4
+//     }
 
-    render() {
-        ctx.fillStyle = this.color
-        ctx.fill(this.x, this.y, this.width, this.h1)
-        ctx.fill(this.x, this.y, this.width, this.h2)
-    }
-}
+//     render() {
+//         ctx.fillStyle = this.color
+//         ctx.fill(this.x, this.y, this.width, this.h1)
+//         ctx.fill(this.x, this.y, this.width, this.h2)
+//     }
+//}
 
 //testing
 const testBird = new Bird(250, 270, 50, 50, 'red')
 let gameFlight = false
-const pipe = new Bird(400, 0, 70, 50, green)
-const pipe2 = new Bird(400, canvas.height, 70, 50, green)
+const pipe = new Bird(900, 0, 70, 200, 'green')
+// const pipe2 = new Bird(400, canvas.height, 70, 50, green)
 // ========== //
 
 
@@ -61,7 +61,9 @@ const start = document.getElementById('start')
 const clickRestart = start.addEventListener('click', () => {
     gameFlight = true
     start.innerText = "FLY"
+    // pipeMovement(15)
 })
+
 
 //bounce
 const pressedKeys = {}
@@ -72,6 +74,7 @@ function controlInput(bounce) {
             // console.log('bounce')
             gameFlight == true
             testBird.y -= bounce
+            pipe.x -= 35
         } else {
             // console.log('falling')
             testBird.y += 15
@@ -116,8 +119,16 @@ function gameLoop() {
     }
     //render game objects
     testBird.render()
+
+    // //pipe movement
+    // function pipeMovement(speed) {
+    //     while (gameFlight === true) {
+    //         pipe.x -= speed
+    //     }
+    // }
+
     pipe.render()
-    pipe2.render()
+    // pipe2.render()
 }
 
 // ========== //
@@ -128,6 +139,12 @@ function detectHitGround(objOne) {
     const topOfGround = objOne.y + objOne.height >= canvas.height
     // console.log(topOfGround)
     return topOfGround //false til true
+}
+
+function detectHitPipe(player, obstacle) {
+    const hitPipe = player.y + player.width 
+    const hitTopPipe = player.x 
+    const hitBotPipe = player.x + player.height
 }
 // ========== //
 
