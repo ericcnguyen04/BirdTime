@@ -51,7 +51,7 @@ class Bird {
 const testBird = new Bird(250, 270, 50, 50, 'red')
 let gameFlight = false
 const pipe = new Bird(900, 0, 70, 200, 'green')
-const pipe2 = new Bird(900, canvas.height, 70, -50, 'green')
+const pipe2 = new Bird(900, canvas.height, 70, -250, 'green')
 // ========== //
 
 
@@ -115,14 +115,17 @@ function gameLoop() {
         gameFlight = false
         start.innerText = "RESTART?"
         restartInput()
-    } else if (detectHitPipe(testBird, pipe || pipe2)) {
+    } else if (detectHitPipe(testBird, pipe)) {
         console.log('gameover')
         gameFlight = false
         start.innerText = "RESTART?"
         restartInput()
+    } else if (detectHitPipe2(testBird, pipe2)) {
+        console.log('hit bot pipe!')
     } else {
         controlInput(35)
     }
+
     //render game objects
     testBird.render()
 
@@ -149,13 +152,17 @@ function detectHitGround(objOne) {
 
 function detectHitPipe(player, obstacle) {
     const hitTopPipe = player.x + player.width >= obstacle.x && player.x <= obstacle.x + obstacle.width && player.y <= obstacle.y + obstacle.height
-    const hitBotPipe = player.x + player.width >= obstacle.x
     // player.y <= obstacle.y + obstacle.height
     // const hitTopPipe = player.y <= obstacle.y + obstacle.height
     // const hitBotPipe = player.x + player.height ==
     console.log(hitTopPipe)
     // console.log(hitTopPipe)
     return hitTopPipe //|| hitTopPipe //false til true
+}
+function detectHitPipe2(player, obstacle) {
+    const hitBotPipe = player.x + player.width >= obstacle.x && player.x <= obstacle.x + obstacle.width && player.y + player.height >= obstacle.y
+    return(hitBotPipe)
+    // player.y <= obstacle.y + obstacle.height
 }
 // ========== //
 
