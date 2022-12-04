@@ -51,7 +51,7 @@ class Bird {
 const testBird = new Bird(250, 270, 50, 50, 'red')
 let gameFlight = false
 const pipe = new Bird(900, 0, 70, 200, 'green')
-// const pipe2 = new Bird(400, canvas.height, 70, 50, green)
+const pipe2 = new Bird(900, canvas.height, 70, -50, 'green')
 // ========== //
 
 
@@ -75,6 +75,7 @@ function controlInput(bounce) {
             gameFlight == true
             testBird.y -= bounce
             pipe.x -= 35
+            pipe2.x -= 35
         } else {
             // console.log('falling')
             testBird.y += 15
@@ -114,7 +115,7 @@ function gameLoop() {
         gameFlight = false
         start.innerText = "RESTART?"
         restartInput()
-    } else if (detectHitPipe(testBird, pipe)) {
+    } else if (detectHitPipe(testBird, pipe || pipe2)) {
         console.log('gameover')
         gameFlight = false
         start.innerText = "RESTART?"
@@ -133,7 +134,7 @@ function gameLoop() {
     // }
 
     pipe.render()
-    // pipe2.render()
+    pipe2.render()
 }
 
 // ========== //
@@ -147,13 +148,14 @@ function detectHitGround(objOne) {
 }
 
 function detectHitPipe(player, obstacle) {
-    const hitPipe = player.x + player.width >= obstacle.x && player.x <= obstacle.x + obstacle.width && player.y <= obstacle.y + obstacle.height
+    const hitTopPipe = player.x + player.width >= obstacle.x && player.x <= obstacle.x + obstacle.width && player.y <= obstacle.y + obstacle.height
+    const hitBotPipe = player.x + player.width >= obstacle.x
     // player.y <= obstacle.y + obstacle.height
     // const hitTopPipe = player.y <= obstacle.y + obstacle.height
     // const hitBotPipe = player.x + player.height ==
-    console.log(hitPipe)
+    console.log(hitTopPipe)
     // console.log(hitTopPipe)
-    return hitPipe //|| hitTopPipe //false til true
+    return hitTopPipe //|| hitTopPipe //false til true
 }
 // ========== //
 
