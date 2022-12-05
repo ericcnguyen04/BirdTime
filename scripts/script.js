@@ -47,19 +47,27 @@ class Bird {
 //     }
 //}
 
+// randomizing pipes
+const pipeGap = 90
+const getPipeAvaliability = canvas.height - pipeGap
+console.log(getPipeAvaliability + 'aval')
+
+function getRandomInteger (min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min
+}
+
+console.log(getRandomInteger(10, getPipeAvaliability))
+
+pipeHeight = getRandomInteger(10, getPipeAvaliability)
+pipe2Height = (getPipeAvaliability - pipeGap - pipeHeight)
+console.log(pipe2Height +'pip2 hei')
+
 //testing
 const testBird = new Bird(250, 270, 50, 50, 'red')
 let gameFlight = false
-const pipe = new Bird(900, 0, 70, 200, 'green')
-const pipe2 = new Bird(900, canvas.height, 70, -270, 'green')
+const pipe = new Bird(900, 0, 70, pipeHeight, 'green')
+const pipe2 = new Bird(900, canvas.height, 70, -(pipe2Height), 'green')
 
-// randomizing pipes
-const pipeGap = 178
-const getPipeAvaliability = canvas.height - pipeGap
-console.log(getPipeAvaliability)
-
-pipeHeight = 200
-pipe2Height = 270
 
 // ========== //
 
@@ -130,7 +138,10 @@ function gameLoop() {
         start.innerText = "RESTART?"
         restartInput()
     } else if (detectHitPipe2(testBird, pipe2)) {
-        console.log('hit bot pipe!')
+        console.log('gameover')
+        gameFlight = false
+        start.innerText = "RESTART?"
+        restartInput()
     } else {
         controlInput(35)
     }
