@@ -47,27 +47,25 @@ class Bird {
 //     }
 //}
 
-// randomizing pipes
-const pipeGap = 120
+// randomizing pipes height
+const pipeGap = 140
 const getPipeAvaliability = canvas.height - pipeGap - 40
 console.log(getPipeAvaliability + 'aval')
 
 function getRandomInteger (min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min
 }
-
 console.log(getRandomInteger(0, getPipeAvaliability))
-
 pipeHeight = 20 + getRandomInteger(0, getPipeAvaliability)
 pipe2Height = 20 + (getPipeAvaliability - pipeHeight)
-console.log(pipe2Height +'pip2 hei' + pipeHeight + ' pip1')
+// console.log(pipe2Height +'pip2 hei' + pipeHeight + ' pip1')
+
 
 //testing
 const testBird = new Bird(250, 270, 50, 50, 'red')
 let gameFlight = false
 const pipe = new Bird(900, 0, 70, pipeHeight, 'green')
 const pipe2 = new Bird(900, canvas.height, 70, -(pipe2Height), 'green')
-
 
 // ========== //
 
@@ -106,6 +104,7 @@ function restartInput() {
         testBird.x = 250
         testBird.y = 270
         start.innerText = "CLICK TO PLAY"
+        gameLoop()
     }
     if (gameFlight == false) { // STARTS OFF IMMEDIATELY
         start.addEventListener('click', () => {
@@ -126,6 +125,14 @@ document.addEventListener('keyup', e => pressedKeys[e.key] = false)
 function gameLoop() {
     //clearing canvas
     ctx.clearRect(0, 0, canvas.width, canvas.height)
+    if (pipe.x <= 0) {
+        pipe.x = 900
+        pipe2.x = 900
+        
+        pipeHeight = 20 + getRandomInteger(0, getPipeAvaliability)
+        pipeHeight
+        pipe2Height = 20 + (getPipeAvaliability - pipeHeight)
+    }
     //detecting hits from bird to ground
     if (detectHitGround(testBird)) {
         console.log('gameover')
@@ -145,15 +152,15 @@ function gameLoop() {
     } else {
         controlInput(35)
     }
-
+    
     //render game objects
     testBird.render()
-
+    
     // //pipe movement
     // function pipeMovement(speed) {
-    //     while (gameFlight === true) {
-    //         pipe.x -= speed
-    //     }
+        //     while (gameFlight === true) {
+            //         pipe.x -= speed
+            //     }
     // }
 
     pipe.render()
@@ -183,6 +190,7 @@ function detectHitPipe2(player, obstacle) {
     const hitBotPipe = player.x + player.width >= obstacle.x 
     const hitSidePipe = player.x <= obstacle.x + obstacle.width
     const hitAbovePipe = player.y + player.height >= canvas.height - Math.abs(obstacle.height)
+    // console.log(hitAbovePipe + hitSidePipe + hitBotPipe)
     return(hitBotPipe && hitSidePipe && hitAbovePipe)
     
     // player.y <= obstacle.y + obstacle.height
