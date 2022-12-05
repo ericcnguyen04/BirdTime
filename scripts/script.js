@@ -51,7 +51,16 @@ class Bird {
 const testBird = new Bird(250, 270, 50, 50, 'red')
 let gameFlight = false
 const pipe = new Bird(900, 0, 70, 200, 'green')
-const pipe2 = new Bird(900, canvas.height, 70, -150, 'green')
+const pipe2 = new Bird(900, canvas.height, 70, -270, 'green')
+
+// randomizing pipes
+const pipeGap = 178
+const getPipeAvaliability = canvas.height - pipeGap
+console.log(getPipeAvaliability)
+
+pipeHeight = 200
+pipe2Height = 270
+
 // ========== //
 
 
@@ -155,7 +164,7 @@ function detectHitPipe(player, obstacle) {
     // player.y <= obstacle.y + obstacle.height
     // const hitTopPipe = player.y <= obstacle.y + obstacle.height
     // const hitBotPipe = player.x + player.height ==
-    console.log(hitTopPipe)
+    // console.log(hitTopPipe)
     // console.log(hitTopPipe)
     return hitTopPipe //|| hitTopPipe //false til true
 }
