@@ -48,19 +48,19 @@ class Bird {
 //}
 
 // randomizing pipes
-const pipeGap = 90
-const getPipeAvaliability = canvas.height - pipeGap
+const pipeGap = 120
+const getPipeAvaliability = canvas.height - pipeGap - 40
 console.log(getPipeAvaliability + 'aval')
 
 function getRandomInteger (min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min
 }
 
-console.log(getRandomInteger(10, getPipeAvaliability))
+console.log(getRandomInteger(0, getPipeAvaliability))
 
-pipeHeight = getRandomInteger(10, getPipeAvaliability)
-pipe2Height = (getPipeAvaliability - pipeGap - pipeHeight)
-console.log(pipe2Height +'pip2 hei')
+pipeHeight = 20 + getRandomInteger(0, getPipeAvaliability)
+pipe2Height = 20 + (getPipeAvaliability - pipeHeight)
+console.log(pipe2Height +'pip2 hei' + pipeHeight + ' pip1')
 
 //testing
 const testBird = new Bird(250, 270, 50, 50, 'red')
