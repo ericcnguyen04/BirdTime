@@ -51,7 +51,7 @@ class Bird {
 const testBird = new Bird(250, 270, 50, 50, 'red')
 let gameFlight = false
 const pipe = new Bird(900, 0, 70, 200, 'green')
-const pipe2 = new Bird(900, canvas.height, 70, -250, 'green')
+const pipe2 = new Bird(900, canvas.height, 70, -150, 'green')
 // ========== //
 
 
@@ -160,8 +160,11 @@ function detectHitPipe(player, obstacle) {
     return hitTopPipe //|| hitTopPipe //false til true
 }
 function detectHitPipe2(player, obstacle) {
-    const hitBotPipe = player.x + player.width >= obstacle.x && player.x <= obstacle.x + obstacle.width && player.y + player.height >= obstacle.y
-    return(hitBotPipe)
+    const hitBotPipe = player.x + player.width >= obstacle.x 
+    const hitSidePipe = player.x <= obstacle.x + obstacle.width
+    const hitAbovePipe = player.y + player.height >= canvas.height - Math.abs(obstacle.height)
+    return(hitBotPipe && hitSidePipe && hitAbovePipe)
+    
     // player.y <= obstacle.y + obstacle.height
 }
 // ========== //
