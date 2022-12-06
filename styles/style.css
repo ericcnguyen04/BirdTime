@@ -1,3 +1,7 @@
+* {
+    font-family: 'Press Start 2P', monospace;
+}
+
 body {
     background-color: grey;
     width: 100vw;
@@ -19,6 +23,21 @@ body {
     border-bottom: 2px solid rgb(82, 81, 81);
     color: white;
     font-size: 26px;
+}
+#logo {
+    padding-left: 20px;
+}
+
+#subtitles {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+
+#nav {
+    display: flex;
+    justify-content: end;
 }
 
 #left {
@@ -65,6 +84,7 @@ body {
 }
 #instructions {
     grid-area: instructions;
+    display: grid;
     background-color: rgb(176, 163, 118);
     border-top: 7px solid grey;
     border-bottom: 7px solid black;
@@ -72,6 +92,28 @@ body {
     border-right: 7px solid black;
     margin-bottom: 10px;
     margin-left: 10px;
+    margin-right: 10px;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas: 'keybinds skinSet difficulty';
+}
+#keybinds {
+    grid-area: keybinds;
+    text-align: center;
+    border-right: 2px solid black;
+}
+#skinSet {
+    grid-area: skinSet;
+    text-align: center;
+    border-right: 2px solid black;
+}
+#difficulty {
+    grid-area: difficulty;
+    display: block;
+    padding-left: 80px;
+}
+
+.diffButton {
+    font-size: 18px;
 }
 
 #score {

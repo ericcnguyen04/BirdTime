@@ -3,14 +3,24 @@ const canvas = document.getElementById('game-screen')
 // set thecanvas resolution to be the same as the screen
 canvas.setAttribute('height', getComputedStyle(canvas)['height'])
 canvas.setAttribute('width', getComputedStyle(canvas)['width'])
-console.log(canvas.height) //648
-console.log(canvas.width) //1094
+//console.log(canvas.height + 'h') //648
+//console.log(canvas.width + 'w') //1094
+
+//links
+donate = document.getElementById('donate')
+donate.addEventListener('mouseover', () => {
+    donate.style.text('underline')
+})
+signIn = document.getElementById('sign-in')
+settings = document.getElementById('settings')
+
+
 
 
 //get rendering context from canvas
 const ctx = canvas.getContext('2d')
 
-const gameLoopInterval = setInterval(gameLoop, 60)
+const gameLoopInterval = setInterval(gameLoop, 16)
 
 // === ! Step 1: OBJECTS ! === //
 class Bird {
@@ -28,38 +38,45 @@ class Bird {
     }
 }
 
-// class Pipe {
-//     constructor(x, y, width, h1, h2) {
-//         this.x = x
-//         this.y = y
-//         this.width = width
-//         // this.gap = gap
-//         this.h1 = h1
-//         this.h2 = h2
-//         // this.h3 = h3
-//         // this.h4 = h4
-//     }
-
-//     render() {
-//         ctx.fillStyle = this.color
-//         ctx.fill(this.x, this.y, this.width, this.h1)
-//         ctx.fill(this.x, this.y, this.width, this.h2)
-//     }
-//}
-
 // randomizing pipes height
-const pipeGap = 140
-const getPipeAvaliability = canvas.height - pipeGap - 40
-console.log(getPipeAvaliability + 'aval')
+const easy = document.getElementById('easy')
+const normal = document.getElementById('normal')
+const hard = document.getElementById('hard')
+
+let pipeGap = 400
+let getPipeAvaliability = canvas.height - pipeGap - 40
+console.log(easy.checked)
+console.log(normal.checked)
+function difficultySelect () {
+    if (normal.checked) {
+        // console.log('normal mode')
+        pipeGap = 140
+    } else if (hard.checked) {
+        pipeGap = 120
+    } else if (easy.checked) {
+        console.log('ez mode')
+        pipeGap = 250
+    }
+    getPipeAvaliability = canvas.height - pipeGap - 40
+}
+console.log(pipeGap)
+// console.log(getPipeAvaliability + 'aval')
 
 function getRandomInteger (min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min
 }
-console.log(getRandomInteger(0, getPipeAvaliability))
+
+// console.log(getRandomInteger(0, getPipeAvaliability))
 pipeHeight = 20 + getRandomInteger(0, getPipeAvaliability)
 pipe2Height = 20 + (getPipeAvaliability - pipeHeight)
-// console.log(pipe2Height +'pip2 hei' + pipeHeight + ' pip1')
+//console.log(pipe2Height +'pip2 hei' + pipeHeight + ' pip1')
 
+// skins
+function colorSelect() {
+    color = document.querySelector('input[name="color"]:checked').id
+    // console.log(color)
+    testBird.color = color
+}
 
 //testing
 const testBird = new Bird(250, 270, 50, 50, 'red')
@@ -79,6 +96,11 @@ const clickRestart = start.addEventListener('click', () => {
     // pipeMovement(15)
 })
 
+function disableButtonDuringFlight () {
+    if (start.innerText === true) {
+        start.removeEventListener
+    }
+}
 
 //bounce
 const pressedKeys = {}
@@ -89,11 +111,11 @@ function controlInput(bounce) {
             // console.log('bounce')
             gameFlight == true
             testBird.y -= bounce
-            pipe.x -= 35
-            pipe2.x -= 35
+            pipe.x -= 15
+            pipe2.x -= 15
         } else {
             // console.log('falling')
-            testBird.y += 15
+            testBird.y += 5
         }
     }
 }
@@ -103,15 +125,21 @@ function restartInput() {
     if (pressedKeys.r) {
         testBird.x = 250
         testBird.y = 270
+        pipe.x = 900
+        pipe2.x = 900
         start.innerText = "CLICK TO PLAY"
-        gameLoop()
+        score = 0
     }
-    if (gameFlight == false) { // STARTS OFF IMMEDIATELY
+    if (gameFlight === false) { // STARTS OFF IMMEDIATELY
         start.addEventListener('click', () => {
             gameFlight == false
             testBird.x = 250
             testBird.y = 270
+            pipe.x = 900
+             pipe2.x = 900
             start.innerText = "FLY"
+            start.removeEventListener
+            score = 0
         })
     }
 }
@@ -121,17 +149,22 @@ document.addEventListener('keydown', e => pressedKeys[e.key] = true)
 document.addEventListener('keyup', e => pressedKeys[e.key] = false)
 
 // === ! Step 3: DEFINE GAME LOOP ! === //
-
+score = 0
 function gameLoop() {
     //clearing canvas
     ctx.clearRect(0, 0, canvas.width, canvas.height)
-    if (pipe.x <= 0) {
+    disableButtonDuringFlight()
+    colorSelect()
+    difficultySelect()
+    
+    if (pipe.x <= 0) { //loops
         pipe.x = 900
         pipe2.x = 900
         
-        pipeHeight = 20 + getRandomInteger(0, getPipeAvaliability)
-        pipeHeight
-        pipe2Height = 20 + (getPipeAvaliability - pipeHeight)
+        pipe.height = 20 + getRandomInteger(0, getPipeAvaliability)
+        pipe2.height = -(20 + (getPipeAvaliability - pipe.height))
+        score++
+        //console.log(pipe2)
     }
     //detecting hits from bird to ground
     if (detectHitGround(testBird)) {
@@ -140,7 +173,7 @@ function gameLoop() {
         start.innerText = "RESTART?"
         restartInput()
     } else if (detectHitPipe(testBird, pipe)) {
-        console.log('gameover')
+        // console.log('gameover')
         gameFlight = false
         start.innerText = "RESTART?"
         restartInput()
@@ -150,8 +183,13 @@ function gameLoop() {
         start.innerText = "RESTART?"
         restartInput()
     } else {
-        controlInput(35)
+        controlInput(15)
     }
+
+    //score
+    scoreDisplay = document.getElementById('score')
+    scoreDisplay.innerText = `${score}`
+    // console.log(score)
     
     //render game objects
     testBird.render()
@@ -165,6 +203,8 @@ function gameLoop() {
 
     pipe.render()
     pipe2.render()
+    // console.log(pipe2)
+    // console.log(pipe)
 }
 
 // ========== //

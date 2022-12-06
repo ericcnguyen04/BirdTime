@@ -10,19 +10,44 @@
 
     <body>
         <header id="header">
-            <h1>BirdTime</h1>
+            <div id="subtitles">
+                <h1 id="logo">BirdTime</h1>
+                <h1 class="theLinks" id="donate">Donate</h1>
+                <h1 class="theLinks" id="sign-in">Sign in</h1>
+                <h1 class="theLinks" id="settings">Settings</h1>
+            </div>
         </header>
         <aside class="side" id="left"></aside>
         <canvas id="game-screen">Please use a browser with support for HTML5 Canvas</canvas>
         <div id="directions">
             <button id="start">CLICK TO PLAY</button>
             <div id="instructions">
-                Dodge all pipes! <br>
-                Press W to flap! <br>
-                Press R to restart!
+                <div id="keybinds">
+                    Dodge all pipes! <br>
+                    Press W to flap! <br>
+                    Press R to restart!
+                </div>
+                <div id="skinSet">
+                        Skins! <br>
+                    <input type="radio" name='color' class="skins" id="red" checked>Red</input>
+                    <input type="radio" name='color' class="skins" id="blue">Blue</input>
+                    <input type="radio" name='color' class="skins" id="orange">Orange</input> <br>
+                    <input type="radio" name='color' class="skins" id="purple">Purple</input>
+                    <input type="radio" name='color' class="skins" id="Yellow">Yellow</input>
+                    <input type="radio" name='color' class="skins" id="pink">Pink</input> <br>
+                    <input type="radio" name='color' class="skins" id="white">White</input>
+                    <input type="radio" name='color' class="skins" id="brown">Brown</input>
+                    <input type="radio" name='color' class="skins" id="aqua">Aqua</input>
+                </div>
+                <div id="difficulty">
+                    <input type="radio" name='choice' class="diffButton" id="easy">Easy</input>
+                    <input type="radio" name='choice' class="diffButton" id="normal" checked>Normal</input>
+                    <input type="radio" name='choice' class="diffButton" id="hard">Hard</input>
+                </div>
             </div>
+
             <div id="score">
-                0
+                
             </div>
         </div>
         <aside class="side" id="right"></aside>
