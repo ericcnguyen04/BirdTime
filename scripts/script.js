@@ -18,6 +18,7 @@ background.height = canvas.height
 
 //sound
 const audio = new Audio('point.mp3')
+const audioFail = new Audio('fail.mp3')
 
 
 const gameLoopInterval = setInterval(gameLoop, 16)
@@ -172,17 +173,20 @@ function gameLoop() {
     }
     //detecting hits from bird to ground
     if (detectHitGround(testBird)) {
-        console.log('gameover')
+        // console.log('gameover')
+        audioFail.play()
         gameFlight = false
         start.innerText = "RESTART?"
         restartInput()
     } else if (detectHitPipe(testBird, pipe)) {
         // console.log('gameover')
+        audioFail.play()
         gameFlight = false
         start.innerText = "RESTART?"
         restartInput()
     } else if (detectHitPipe2(testBird, pipe2)) {
-        console.log('gameover')
+        // console.log('gameover')
+        audioFail.play()
         gameFlight = false
         start.innerText = "RESTART?"
         restartInput()
