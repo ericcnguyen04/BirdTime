@@ -41,3 +41,7 @@ Then, create pipes that will randomize the gap of the pipes, and make the pipes 
 - adding 'skins' to the game -- ability to change the bird's appearance
 - provide the bird an animation by facing up and down depending on the process of the hopping
 - provide a background with animation to display movement
+
+
+## Link
+https://ericcnguyen04.github.io/PROJECT1/

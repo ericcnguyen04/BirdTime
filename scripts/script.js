@@ -12,17 +12,15 @@ const ctx = canvas.getContext('2d')
 
 //background
 background = new Image()
-background.src = 'background3.png'
+background.src = './img/background3.png'
 background.width = canvas.width
 background.height = canvas.height
 
-topPipeImg = new Image('toppipe.png')
-botPipeImg = new Image('botpipe.png')
 
 //sound
-const audio = new Audio('point.mp3')
-const audioFail = new Audio('fail.mp3')
-const flap = new Audio('flap.mp3')
+const audio = new Audio('./sound/point.mp3')
+const audioFail = new Audio('./sound/fail.mp3')
+const flap = new Audio('./sound/flap.mp3')
 
 
 const gameLoopInterval = setInterval(gameLoop, 16)
@@ -162,7 +160,6 @@ function gameLoop() {
     //clearing canvas
     ctx.clearRect(0, 0, canvas.width, canvas.height)
     ctx.drawImage(background, 0, 0)
-    ctx.drawImage(topPipeImg, 0, 0)
     disableButtonDuringFlight()
     colorSelect()
     difficultySelect()
