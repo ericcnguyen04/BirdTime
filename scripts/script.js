@@ -6,19 +6,16 @@ canvas.setAttribute('width', getComputedStyle(canvas)['width'])
 //console.log(canvas.height + 'h') //648
 //console.log(canvas.width + 'w') //1094
 
-//links
-donate = document.getElementById('donate')
-donate.addEventListener('mouseover', () => {
-    donate.style.text('underline')
-})
-signIn = document.getElementById('sign-in')
-settings = document.getElementById('settings')
-
-
-
 
 //get rendering context from canvas
 const ctx = canvas.getContext('2d')
+
+//background
+background = new Image()
+background.src = 'background3.png'
+background.width = canvas.width
+background.height = canvas.height
+
 
 const gameLoopInterval = setInterval(gameLoop, 16)
 
@@ -52,7 +49,7 @@ function difficultySelect () {
         // console.log('normal mode')
         pipeGap = 140
     } else if (hard.checked) {
-        pipeGap = 120
+        pipeGap = 110
     } else if (easy.checked) {
         console.log('ez mode')
         pipeGap = 250
@@ -113,6 +110,8 @@ function controlInput(bounce) {
             testBird.y -= bounce
             pipe.x -= 15
             pipe2.x -= 15
+        } else if (pressedKeys.s) {
+            testBird.y += 15
         } else {
             // console.log('falling')
             testBird.y += 5
@@ -153,6 +152,7 @@ score = 0
 function gameLoop() {
     //clearing canvas
     ctx.clearRect(0, 0, canvas.width, canvas.height)
+    ctx.drawImage(background, 0, 0)
     disableButtonDuringFlight()
     colorSelect()
     difficultySelect()

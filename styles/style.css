@@ -3,7 +3,7 @@
 }
 
 body {
-    background-color: grey;
+    background-color: rgb(237, 209, 116);
     width: 100vw;
     min-height: 100vh;
     margin: 0;
@@ -24,8 +24,19 @@ body {
     color: white;
     font-size: 26px;
 }
-#logo {
-    padding-left: 20px;
+
+
+.theLinks {
+    color: white;
+    font-family: 'Press Start 2P', monospace;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 52px;
+    margin-top: 33px;
+}
+
+a:hover {
+    text-decoration: underline;
 }
 
 #subtitles {
@@ -133,4 +144,16 @@ body {
 #footer {
     grid-area: footer;
     background-color: rgb(147, 79, 69);
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    text-align: center;
+}
+
+#footer1 {
+    color:rgb(230, 199, 160);
+    font-size: 34px
+}
+#footer4 {
+    margin-left: 193px;
+    margin-top: 52px;
 }
