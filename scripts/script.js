@@ -16,6 +16,9 @@ background.src = 'background3.png'
 background.width = canvas.width
 background.height = canvas.height
 
+topPipeImg = new Image('toppipe.png')
+botPipeImg = new Image('botpipe.png')
+
 //sound
 const audio = new Audio('point.mp3')
 const audioFail = new Audio('fail.mp3')
@@ -157,6 +160,7 @@ function gameLoop() {
     //clearing canvas
     ctx.clearRect(0, 0, canvas.width, canvas.height)
     ctx.drawImage(background, 0, 0)
+    ctx.drawImage(topPipeImg, 0, 0)
     disableButtonDuringFlight()
     colorSelect()
     difficultySelect()
