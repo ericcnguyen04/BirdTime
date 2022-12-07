@@ -22,6 +22,7 @@ botPipeImg = new Image('botpipe.png')
 //sound
 const audio = new Audio('point.mp3')
 const audioFail = new Audio('fail.mp3')
+const flap = new Audio('flap.mp3')
 
 
 const gameLoopInterval = setInterval(gameLoop, 16)
@@ -117,6 +118,7 @@ function controlInput(bounce) {
             testBird.y -= bounce
             pipe.x -= 15
             pipe2.x -= 15
+            flap.play()
         } else if (pressedKeys.s) {
             testBird.y += 15
         } else {
