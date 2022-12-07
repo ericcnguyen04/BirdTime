@@ -16,6 +16,9 @@ background.src = 'background3.png'
 background.width = canvas.width
 background.height = canvas.height
 
+//sound
+const audio = new Audio('point.mp3')
+
 
 const gameLoopInterval = setInterval(gameLoop, 16)
 
@@ -163,6 +166,7 @@ function gameLoop() {
         
         pipe.height = 20 + getRandomInteger(0, getPipeAvaliability)
         pipe2.height = -(20 + (getPipeAvaliability - pipe.height))
+        audio.play()
         score++
         //console.log(pipe2)
     }
