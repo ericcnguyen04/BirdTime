@@ -3,7 +3,7 @@
 ## Description
 It's a shame that a developer had removed their program out of guilt. He witnessed his user enraged and decided to discontinue a game that was the cause of misfortune, Flappy Bird.
 
-A unique platformer with a strange concept of flight. You are the bird that is trying to get by, but Mario pipes wants to get in the way. For some reason, you are very fragile, so precision is key.
+A unique platformer with a strange concept of flight. You are a bird that is trying to get by, but Mario pipes wants to get in the way. For some reason, you are very fragile, so precision is key.
 
 This game is an endless platformer and will continue until the player has collided with the obstacles. The goal is to get as many points as possible! As simple as it may sound, it does bring out your competitive nature!
 
