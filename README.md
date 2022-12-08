@@ -29,9 +29,13 @@ and will be formatted like a 2012 web games like y3 or y8
 
 Title: Bird Time
 Header: with a logo and additonal user features (log in) mainly for design rather than actually logging in
+
 Two Aside: used as borders to center the canvas, the aside will be a background to set the theme of the website
+
 Canvas: the main scene of where the game will take place
+
 Section: below the canvas is the description of the game, and the controls
+
 Footer: a footer will be at the bottom of the page for design purposes
 
 
