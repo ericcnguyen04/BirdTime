@@ -42,16 +42,18 @@ Footer: a footer will be at the bottom of the page for design purposes
 ## MVP Goals
 One of the first forms of functionality I need to do is the hopping of the bird.
 Then, create pipes that will randomize the gap of the pipes, and make the pipes go towards the bird
-- press the w key to start the game
-- control the bird's hopping by clicking on the spacebar
+- click to start the game
+- control the bird's hopping by clicking on the w key
 - create pipes as obstacles
 - create a function where pipes move towards the bird as soon as the game starts
 - repeat the pipe function so that endless amounts of pipes go towards the bird, with different position of the gaps
 - stop the game if the bird's hitbox comes in contact with the pipe
-- bring up a board to show you your results and a button to redo/play again
+- display a point system to show you your results and a button to redo/play again
 
 ## STRETCH Goals
 - adding 'skins' to the game -- ability to change the bird's appearance
+- adding difficulties for player experience
+- adding additional features like links as if it was a website
 - provide the bird an animation by facing up and down depending on the process of the hopping
 - provide a background with animation to display movement
 
