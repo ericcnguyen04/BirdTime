@@ -72,3 +72,5 @@ aaarafat JS-Flappy-Bird github -- a similar project to find inspiration and stra
 Stackoverflow -- joining with the community and using open resources as a method of problem solving
 
 OpenGameArt -- used for a background
+
+Slay the Ogre project -- a program I used as reference for canvas
