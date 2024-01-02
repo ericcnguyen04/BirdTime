@@ -6,7 +6,7 @@ A unique platformer with a strange concept of flight. You are a bird that is try
 
 This game is an endless platformer and will continue until the player has collided with the obstacles. The goal is to get as many points as possible! As simple as it may sound, it does bring out your competitive nature!
 
-https://ericcnguyen04.github.io/PROJECT1/
+[https://ericcnguyen04.github.io/PROJECT1/](https://ericcnguyen04.github.io/BirdTime/)
 
 ## Approach
 I believed that the best approach is to set up the wireframe and frame the canvas. After a quick and simple layout, I started on creating the game in canvas to reach my MVP. My first steps was creating an entity for bird and providing characteristics of hopping. Then, I created two new entities representing the pipes. Once I created movement for the pipes, I created lose conditions by detecting any connection between the bird and the pipes or ground.
